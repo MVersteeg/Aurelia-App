@@ -62,11 +62,11 @@ gulp.task('build-bootstrap-sass', function () {
     .pipe(gulp.dest(paths.output ));
 });
 
-gulp.task('build-bootstrap-lib', function () {
-  return gulp.src(paths.bootstrap)
-    .pipe(rename({basename:'bootstrap'}))
-    .pipe(gulp.dest(paths.output));
-});
+//gulp.task('build-bootstrap-lib', function () {
+//  return gulp.src(paths.bootstrap)
+//    .pipe(rename({basename:'bootstrap'}))
+//    .pipe(gulp.dest(paths.output));
+//});
 
 gulp.task('build', function (callback) {
   return runSequence(
