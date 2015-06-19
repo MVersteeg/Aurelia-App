@@ -1,0 +1,53 @@
+{
+  "name": "app-template",
+  "description": "a basic template for a MVVM application, with a bootstrap frontend and REST api",
+  "private ": true,
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.5",
+    "browser-sync": "latest",
+    "del": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "latest",
+    "gulp-changed": "latest",
+    "gulp-jade": "latest",
+    "gulp-minify-css": "^1.1.6",
+    "gulp-plumber": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "latest",
+    "require-dir": "latest",
+    "run-sequence": "latest",
+    "vinyl-paths": "latest"
+  },
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "aurelia-animator-css": "github:aurelia/animator-css@^0.3.2",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.13.1",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.8.1",
+      "aurelia-framework": "github:aurelia/framework@^0.12.0",
+      "aurelia-http-client": "github:aurelia/http-client@^0.9.1",
+      "aurelia-router": "github:aurelia/router@^0.9.0",
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "css": "github:systemjs/plugin-css@^0.1.12",
+      "svg.js": "github:wout/svg.js@^2.0.0",
+      "wout/svg.js": "github:wout/svg.js@^2.0.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    },
+    "overrides": {
+      "github:wout/svg.js@2.0.0": {
+        "main": "dist/svg.min.js",
+        "shim": {
+          "dist/svg.min.js": {
+            "exports": "SVG"
+          }
+        }
+      }
+    }
+  }
+}

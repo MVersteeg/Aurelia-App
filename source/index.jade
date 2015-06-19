@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title App Template
+    link(rel="stylesheet" type="text/css" href="app.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body(aurelia-app="app-config")
+    div(class="splash")
+      div(class="message") Loading App...
+        i(class="fa fa-spinner fa-spin")
+    script(src="jspm_packages/system.js")
+    script(src="system-config.js")
+    script System.import('aurelia-bootstrapper')

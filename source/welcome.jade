@@ -1,0 +1,17 @@
+template
+  section(class="au-animate")
+    h2 ${heading}
+    form(role="form" submit.delegate="submit()")
+      div(class="form-group")
+        label(for="fn") First Name
+        input(type="text" value.bind="firstName" class="form-control" id="fn" placeholder="first name")
+
+      div(class="form-group")
+        label(for="ln") Last Name
+        input(type="text" value.bind="lastName" class="form-control" id="ln" placeholder="last name")
+
+      div(class="form-group")
+        label Full Name
+        p(class="help-block") ${fullName | upper}
+
+      button(type="submit" class="btn btn-primary btn-sm") Submit

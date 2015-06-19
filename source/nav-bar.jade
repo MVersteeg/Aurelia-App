@@ -1,0 +1,18 @@
+template
+  nav(class="navbar navbar-default navbar-fixed-top" role="navigation")
+    div(class="navbar-header")
+      button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+        span(class="sr-only") Toggle Navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+      a(class="navbar-brand" href="#")
+        i(class="fa fa-home")
+        span ${router.title}
+    div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+      ul(class="nav navbar-nav")
+        li(repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}")
+          a(href.bind="row.href" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in") ${row.title}
+      ul(class="nav navbar-nav navbar-right")
+        li(if.bind="router.isNavigating" class="loader")
+          i(class="fa fa-spinner fa-spin fa-2x")
