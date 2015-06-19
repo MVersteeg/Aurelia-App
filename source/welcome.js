@@ -1,9 +1,25 @@
 import {computedFrom} from 'aurelia-framework';
+import {Validation} from 'aurelia-validation';
+
 
 export class Welcome{
-  heading = 'Welcome to the App template with Aurelia and Bootstrap !';
-  firstName = 'John';
-  lastName = 'Doe';
+  static inject() { return [Validation]; }
+  constructor(validation){
+    this.heading = 'App template with Aurelia and Bootstrap !';
+    this.firstName = 'John';
+    this.lastName = 'Doe';
+
+    this.validation = validation.on(this)
+      .ensure('firstName')
+        .isNotEmpty()
+        .hasMinLength(3)
+        .hasMaxLength(10)
+      .ensure('lastName')
+        .isNotEmpty()
+        .hasMinLength(3)
+        .hasMaxLength(10);
+  }
+
   previousValue = this.fullName;
 
   //Getters can't be observed with Object.observe, so they must be dirty checked.
@@ -14,10 +30,17 @@ export class Welcome{
     return `${this.firstName} ${this.lastName}`;
   }
 
+  attached()
+  {
+    this.validation.validate()
+  }
+
   submit(){
-    this.previousValue = this.fullName;
-    console.log('welcome clicked');
-    alert(`Welcome, ${this.fullName}!`);
+    this.validation.validate() //the validate will fulfil when validation is valid, and reject if not
+      .then( () => {
+        this.previousValue = this.fullName;
+        alert(`Welcome, ${this.fullName}! `);
+      });
   }
 
   canDeactivate() {

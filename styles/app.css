@@ -2,6 +2,17 @@ body {
   margin: 0;
 }
 
+.aurelia-validation-message{
+    display:  inline;
+    margin-left : 5px;
+}
+.has-success label {
+    color: #3c763d;
+}
+.has-warning label {
+    color: #8a6d3b;
+}
+
 .splash {
     text-align: center;
     margin: 10% 0 0 0;

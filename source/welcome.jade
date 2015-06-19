@@ -1,7 +1,7 @@
 template
   section(class="au-animate")
     h2 ${heading}
-    form(role="form" submit.delegate="submit()")
+    form(role="form" submit.delegate="submit()" validate.bind="validation")
       div(class="form-group")
         label(for="fn") First Name
         input(type="text" value.bind="firstName" class="form-control" id="fn" placeholder="first name")
@@ -14,4 +14,4 @@ template
         label Full Name
         p(class="help-block") ${fullName | upper}
 
-      button(type="submit" class="btn btn-primary btn-sm") Submit
+      button(type="submit" class="btn btn-primary btn-sm" disabled.bind="!validation.result.isValid") Submit
