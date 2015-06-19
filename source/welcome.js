@@ -20,7 +20,7 @@ export class Welcome{
         .hasMaxLength(10);
   }
 
-  previousValue = this.fullName;
+
 
   //Getters can't be observed with Object.observe, so they must be dirty checked.
   //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
@@ -28,11 +28,6 @@ export class Welcome{
   @computedFrom('firstName', 'lastName')
   get fullName(){
     return `${this.firstName} ${this.lastName}`;
-  }
-
-  attached()
-  {
-    this.validation.validate()
   }
 
   submit(){
@@ -44,7 +39,7 @@ export class Welcome{
   }
 
   canDeactivate() {
-    if (this.fullName !== this.previousValue) {
+    if (this.previousValue && this.fullName !== this.previousValue) {
       return confirm('Are you sure you want to leave?');
     }
   }

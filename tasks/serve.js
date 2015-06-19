@@ -1,22 +1,32 @@
 var gulp = require('gulp');
 var paths = require('../paths');
 var browserSync = require('browser-sync');
+var nodemon = require('gulp-nodemon');
 
-gulp.task('serve', ['build'], function(done) {
-  browserSync({
-    open: false,
-    port: 3000,
-    server: {
-      baseDir: "dist",
-      routes: {
-        "/system-config.js": "config.js",
-        "/jspm_packages": "jspm_packages"
-      },
-      middleware: function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        console.log(req.url);
-        next();
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+    script: 'server.js'
+  })
+    .on('start', function onStart() {
+      if (!called) {
+        cb();
       }
-    }
-  }, done);
+      called = true;
+    })
+    .on('restart', function onRestart() {
+
+      setTimeout(function reload() {
+        browserSync.reload({
+          stream: false
+        });
+      }, 500);
+    });
+});
+
+gulp.task('browser-sync', ['build', 'nodemon'], function() {
+  browserSync.init({
+    proxy: 'http://localhost:4000',
+    port: 3000
+  });
 });
